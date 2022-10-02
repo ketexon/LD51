@@ -9,12 +9,14 @@ namespace LD51
     {
         void Start()
         {
-            PlayerInputManager.Instance.Actions.Player.Pause.started += OnInputPause;
+            State.Local
+                .Player.InputManager
+                .Actions.Player.Pause.started += OnInputPause;
         }
 
         void OnInputPause(InputAction.CallbackContext obj)
         {
-            GameManager.Instance.TogglePause();
+            GameTime.Instance.TogglePause();
         }
     }
 }

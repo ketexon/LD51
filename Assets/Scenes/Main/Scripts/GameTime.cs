@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace LD51
 {
-    public class GameManager : MonoBehaviour
+    public class GameTime : MonoBehaviour
     {
         public event System.Action EveryTenSeconds;
 
-        public static GameManager Instance { get; private set; }
+        public static GameTime Instance { get; private set; }
         public static float DeltaTime => Instance.paused ? 0f : UnityEngine.Time.deltaTime;
         public static float FixedDeltaTime => Instance.paused ? 0f : UnityEngine.Time.fixedDeltaTime;
         public static float Time => Instance.paused ? Instance.lastPauseTime : UnityEngine.Time.time - Instance.netPauseTime;
@@ -85,7 +85,6 @@ namespace LD51
 
         void Start()
         {
-            State.Local.Time = 0f;
             lastEveryTenSecondsTime = Time;
         }
 
