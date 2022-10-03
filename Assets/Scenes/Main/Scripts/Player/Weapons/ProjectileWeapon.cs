@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LD51
 {
-    public class Knife : ActiveWeapon
+    public class ProjectileWeapon : ActiveWeapon
     {
         public int Pierce = 0;
 
@@ -16,9 +16,6 @@ namespace LD51
 
         [SerializeField]
         GameObject projectilePrefab;
-
-        public override float Interval => 1;
-        public override string Name => "knife";
 
 
         void Awake()
@@ -35,7 +32,7 @@ namespace LD51
             // -> theta = arccos(direction.x)
             var projectileGO = Instantiate(projectilePrefab);
             projectileGO.transform.position = transform.position;
-            var projectile = projectileGO.GetComponent<KnifeProjectile>();
+            var projectile = projectileGO.GetComponent<Projectile>();
             projectile.Direction = direction;
             projectile.Pierce = Pierce;
         }

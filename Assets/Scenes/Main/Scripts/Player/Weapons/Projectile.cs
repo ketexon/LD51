@@ -5,7 +5,7 @@ using UnityEngine;
 namespace LD51
 {
     [RequireComponent(typeof(Collider2D))]
-    public class KnifeProjectile : MonoBehaviour
+    public class Projectile : MonoBehaviour
     {
         [System.NonSerialized]
         public Vector2 Direction;
