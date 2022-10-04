@@ -44,9 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3b549ef9db3c645b3fe7ee1147acb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pierce: 0
-  range: 1
-  humanMask:
-    serializedVersion: 2
-    m_Bits: 64
+  StatsOffset:
+    Interval: 1
+    Pierce: 0
+    Range: 2
+    Velocity: 2
+  StatsMult:
+    Interval: 1
+    Pierce: 1
+    Range: 1
+    Velocity: 10
   projectilePrefab: {fileID: 2986823690191567556, guid: 58f6de13eb309884ca8a687ecd19b4a0, type: 3}

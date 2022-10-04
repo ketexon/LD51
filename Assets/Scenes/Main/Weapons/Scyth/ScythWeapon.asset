@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df44274927ca71b4597dc53bd2b1425c, type: 3}
-  m_Name: KnifeWeaponInfo
+  m_Name: ScythWeapon
   m_EditorClassIdentifier: 
-  Name: Knife
-  Prefab: {fileID: 4859186070444986386, guid: cb7337140cc93ef4b9e8103a4731c4f6, type: 3}
+  Name: Scyth
+  Prefab: {fileID: 7199191790701341990, guid: b7f4a00e705d74d45922c8ace73787b4, type: 3}
   UsedStats: -1

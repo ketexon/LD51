@@ -28,7 +28,7 @@ namespace LD51
         {
             Humans.Add(child);
             child.gameObject.name = string.Format("Human {0}", Births++);
-            child.transform.parent = transform;
+            child.transform.SetParent(transform, true);
         }
 
         public void RegisterDeath(Human deceased)

@@ -4,12 +4,17 @@ using UnityEngine;
 
 namespace LD51
 {
+    [System.Serializable]
     public class LocalStateData
     {
+        [System.NonSerialized]
         public Player Player;
+        [System.NonSerialized]
         public Population Population;
 
         public int ChildrenPerHuman = 1;
+
+        public List<WeaponTier> WeaponPool;
     }
 
     public class State : MonoBehaviour
@@ -17,8 +22,27 @@ namespace LD51
         public static State Instance { get; private set; }
         public static LocalStateData Local => Instance == null ? null : Instance.local;
 
-        public static event System.Action Ready;
+        static event System.Action ready;
+        public static event System.Action Ready
+        {
+            add
+            {
+                if(Instance != null)
+                {
+                    value();
+                }
+                else
+                {
+                    ready += value;
+                }
+            }
+            remove
+            {
+                ready -= value;
+            }
+        }
 
+        [SerializeField]
         LocalStateData local = new LocalStateData();
 
         void Awake()
@@ -31,7 +55,7 @@ namespace LD51
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
-                Ready?.Invoke();
+                ready?.Invoke();
             }
         }
     }
