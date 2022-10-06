@@ -9,27 +9,22 @@ namespace LD51
     {
         [System.NonSerialized]
         public Vector2 Direction;
+        [System.NonSerialized]
+        public ProjectileWeapon Weapon;
 
-        public int Pierce = 0;
-        public float Velocity = 20f;
-        public float Duration = 2f / 20f;
         public LayerMask HumanMask;
 
+        float duration;
 
-        new Collider2D collider;
         float startTime = 0f;
 
         int nKilled = 0;
 
         Queue<Human> hits = new Queue<Human>();
 
-        void Awake()
-        {
-            collider = GetComponent<Collider2D>();
-        }
-
         void Start()
         {
+            duration = Weapon.RealizedStats.Range / Weapon.RealizedStats.Velocity;
             startTime = GameTime.Time;
             var theta = Mathf.Acos(Direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(
@@ -40,19 +35,20 @@ namespace LD51
 
         void Update()
         {
-            transform.position += (Vector3)Direction * Velocity * GameTime.DeltaTime;
-            if(GameTime.Time > startTime + Duration)
+            if(GameTime.Time > startTime + duration)
             {
                 Destroy(gameObject);
             }
 
-            while(hits.Count > 0 && nKilled <= Pierce)
+            transform.position += (Vector3)Direction * Weapon.RealizedStats.Velocity * GameTime.DeltaTime;
+
+            while (hits.Count > 0 && nKilled <= Weapon.RealizedStats.Pierce)
             {
                 var human = hits.Dequeue();
                 human.Kill();
                 nKilled++;
             }
-            if(nKilled > Pierce)
+            if(nKilled > Weapon.RealizedStats.Pierce)
             {
                 Destroy(gameObject);
             }

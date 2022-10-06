@@ -37,7 +37,6 @@ namespace LD51
         bool waiting = false;
         float waitTime = 0f;
         float startWaitingTime = 0f;
-        float startMovingTime = 0f;
 
         public void Kill()
         {
@@ -97,7 +96,6 @@ namespace LD51
                 if(GameTime.Time >= startWaitingTime + waitTime)
                 {
                     waiting = false;
-                    startMovingTime = GameTime.Time;
                 }
             }
         }

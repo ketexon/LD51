@@ -13,6 +13,22 @@ namespace LD51
         [System.NonSerialized]
         public InputActions Actions;
 
+        Stack<string> actionMaps = new Stack<string>();
+
+        public void PushActionMap(string nameOrId)
+        {
+            actionMaps.Push(PlayerInput.currentActionMap.id.ToString());
+            PlayerInput.SwitchCurrentActionMap(nameOrId);
+        }
+
+        public void PopActionMap()
+        {
+            if(actionMaps.Count > 0)
+            {
+                PlayerInput.SwitchCurrentActionMap(actionMaps.Pop());
+            }
+        }
+
         void Awake()
         {
             PlayerInput = GetComponent<PlayerInput>();

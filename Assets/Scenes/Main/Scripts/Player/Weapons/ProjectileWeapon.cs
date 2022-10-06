@@ -6,17 +6,8 @@ namespace LD51
 {
     public class ProjectileWeapon : ActiveWeapon
     {
-        public int Pierce = 0;
-
-        [SerializeField]
-        float range = 2f;
-
-        [SerializeField]
-        LayerMask humanMask;
-
         [SerializeField]
         GameObject projectilePrefab;
-
 
         void Awake()
         {
@@ -33,8 +24,8 @@ namespace LD51
             var projectileGO = Instantiate(projectilePrefab);
             projectileGO.transform.position = transform.position;
             var projectile = projectileGO.GetComponent<Projectile>();
+            projectile.Weapon = this;
             projectile.Direction = direction;
-            projectile.Pierce = Pierce;
         }
     }
 }
