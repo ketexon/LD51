@@ -866,7 +866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2516758239204536283, guid: 736f6bc6740a0744d91e618dd5ad6331, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 70.5113
       objectReference: {fileID: 0}
     - target: {fileID: 2516758239204536283, guid: 736f6bc6740a0744d91e618dd5ad6331, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.9
+  m_fontSize: 22.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1356,7 +1356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2516758239204536283, guid: 736f6bc6740a0744d91e618dd5ad6331, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 70.5113
       objectReference: {fileID: 0}
     - target: {fileID: 2516758239204536283, guid: 736f6bc6740a0744d91e618dd5ad6331, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2451,7 +2451,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.9
+  m_fontSize: 22.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2893,7 +2893,7 @@ MonoBehaviour:
     MinWaitTime: 0.2
     MaxWaitTime: 1
   humanPrefab: {fileID: 3844949836846544238, guid: 18ab459abbe900544807d6c22496f9b4, type: 3}
-  startPopulation: 1000
+  startPopulation: 3000
   maxPopulation: 5000
   range: {x: 5, y: 5}
   visibleRange: {x: 5, y: 5}
@@ -3858,7 +3858,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.75
+  m_fontSize: 29.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4071,7 +4071,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.9
+  m_fontSize: 22.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

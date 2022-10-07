@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3423788460131367351}
   - component: {fileID: 5306335207026566167}
   - component: {fileID: 2509267153243483370}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Scyth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 0.1}
+  m_Size: {x: 3, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &2509267153243483370
 MonoBehaviour:
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3645424277848537853}
   - component: {fileID: 7199191789001996599}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

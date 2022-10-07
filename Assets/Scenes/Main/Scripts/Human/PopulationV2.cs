@@ -132,6 +132,14 @@ namespace LD51
                     )
                 );
 
+                humanTransformJob = new HumanTransformJob
+                {
+                    Random = random,
+                    HumanParameters = humanParameters,
+                    HumanInstances = humanData,
+                    Time = GameTime.Time,
+                    DeltaTime = GameTime.DeltaTime
+                };
                 humanTransformJobHandle = humanTransformJob.Schedule(livingHumanTransforms);
             }
         }

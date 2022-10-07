@@ -4,6 +4,7 @@ using Unity.Collections;
 using UnityEngine;
 using Unity.Burst;
 using UnityEngine.Jobs;
+using Unity.Jobs;
 using Unity.Mathematics;
 using Random = Unity.Mathematics.Random;
 using System.Runtime.InteropServices;
@@ -55,7 +56,7 @@ namespace LD51
     }
 
     [BurstCompile(
-        CompileSynchronously = true, 
+        CompileSynchronously = true,
         OptimizeFor = OptimizeFor.Performance
     )]
     struct HumanTransformJob : IJobParallelForTransform
@@ -68,20 +69,18 @@ namespace LD51
 
         public void Execute(int idx, TransformAccess transform)
         {
-            transform.position += Vector3.right * DeltaTime;
-            return;
             bool modified = false;
             var human = HumanInstances[idx];
             if (!human.Waiting)
             {
-                if(Time > human.EndStateTime)
+                if (Time > human.EndStateTime)
                 {
                     modified = true;
                     // Seed with time reinterpreted as float + index
 
                     human.Waiting = true;
                     human.EndStateTime
-                        += Random.NextFloat(
+                        = Time + Random.NextFloat(
                             HumanParameters.MinWaitTime,
                             HumanParameters.MaxWaitTime
                         );
@@ -98,11 +97,11 @@ namespace LD51
             }
             else // Waiting
             {
-                if(Time > human.EndStateTime)
+                if (Time > human.EndStateTime)
                 {
                     human.Waiting = false;
                     human.EndStateTime
-                        += Random.NextFloat(
+                        = Time + Random.NextFloat(
                             HumanParameters.MinMoveTime,
                             HumanParameters.MaxMoveTime
                         );

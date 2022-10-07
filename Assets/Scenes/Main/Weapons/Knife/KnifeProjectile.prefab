@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2712443315831184827}
   - component: {fileID: 5287028163076901232}
   - component: {fileID: 5737185232816588810}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KnifeProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,8 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5c166a00e35394c907f8950d2736a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocity: 20
-  Duration: 0.1
   HumanMask:
     serializedVersion: 2
     m_Bits: 64
@@ -109,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8891286501137428754}
   - component: {fileID: 5008024049884945314}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
