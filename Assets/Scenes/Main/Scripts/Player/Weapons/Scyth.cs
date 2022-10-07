@@ -19,7 +19,7 @@ namespace LD51
 
         int nKilled = 0;
 
-        Queue<Human> hits = new Queue<Human>();
+        Queue<HumanV2> hits = new Queue<HumanV2>();
 
         float velocitySign = 1f;
 
@@ -64,7 +64,7 @@ namespace LD51
             while (hits.Count > 0 && nKilled <= Weapon.RealizedStats.Pierce)
             {
                 var human = hits.Dequeue();
-                human.Kill();
+                State.Local.PopulationV2.KillHuman(human);
                 nKilled++;
             }
             if (nKilled >= Weapon.RealizedStats.Pierce)
@@ -78,7 +78,7 @@ namespace LD51
             var colliderLayerMask = (2 << (collision.gameObject.layer - 1));
             if ((colliderLayerMask & HumanMask.value) != 0)
             {
-                var human = collision.gameObject.GetComponent<Human>();
+                var human = collision.gameObject.GetComponent<HumanV2>();
                 hits.Enqueue(human);
             }
         }

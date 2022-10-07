@@ -49,7 +49,7 @@ namespace LD51
         void Start()
         {
             InitNavigation();
-            Activate();
+            //Activate();
         }
 
         List<WeaponInfo> SelectNewWeaponsFromPool(int max = 4)

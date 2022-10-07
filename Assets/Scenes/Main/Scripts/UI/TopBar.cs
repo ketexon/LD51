@@ -24,8 +24,8 @@ namespace LD51
 
         void Update()
         {
-            nHumans.text = State.Local.Population.Count.ToString();
-            nDeaths.text = State.Local.Population.Deaths.ToString();
+            nHumans.text = State.Local.PopulationV2.Count.ToString();
+            nDeaths.text = State.Local.PopulationV2.Deaths.ToString();
 
             var ts = TimeSpan.FromSeconds(GameTime.Time);
             time.text = ts.ToString(@"mm\:ss");

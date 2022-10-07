@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3844949836846544232}
   - component: {fileID: 3844949836846544239}
   - component: {fileID: 3844949836846544234}
+  - component: {fileID: -3444552311634689196}
   m_Layer: 6
   m_Name: HumanV2
   m_TagString: Untagged
@@ -111,3 +112,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-3444552311634689196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3844949836846544238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c506e52c95d6c40b1f2c623ef08066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Index: 0

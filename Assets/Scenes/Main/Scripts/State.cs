@@ -11,6 +11,8 @@ namespace LD51
         public Player Player;
         [System.NonSerialized]
         public Population Population;
+        [System.NonSerialized]
+        public PopulationV2 PopulationV2;
 
         public int ChildrenPerHuman = 1;
 

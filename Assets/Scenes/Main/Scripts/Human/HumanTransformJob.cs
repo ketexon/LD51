@@ -10,6 +10,27 @@ using System.Runtime.InteropServices;
 
 namespace LD51
 {
+    [StructLayout(LayoutKind.Explicit)]
+    public struct Reinterpret
+    {
+        [FieldOffset(0)]
+        public int IntValue;
+        [FieldOffset(0)]
+        public uint UIntValue;
+        [FieldOffset(0)]
+        public float FloatValue;
+
+        public static uint FloatToUInt(float floatValue)
+        {
+            return new Reinterpret { FloatValue = floatValue }.UIntValue;
+        }
+
+        public static uint IntToUInt(int floatValue)
+        {
+            return new Reinterpret { FloatValue = floatValue }.UIntValue;
+        }
+    }
+
     [System.Serializable]
     public struct HumanParameters
     {
@@ -25,8 +46,6 @@ namespace LD51
     [System.Serializable]
     public struct HumanInstanceData
     {
-        // RNG
-        public Random Random;
         // Time to move to new state (waiting/moving)
         public float EndStateTime;
         // True if human should be sitting still
@@ -35,30 +54,13 @@ namespace LD51
         public float2 MoveDirection;
     }
 
-    [BurstCompile(CompileSynchronously = true)]
+    [BurstCompile(
+        CompileSynchronously = true, 
+        OptimizeFor = OptimizeFor.Performance
+    )]
     struct HumanTransformJob : IJobParallelForTransform
     {
-        [StructLayout(LayoutKind.Explicit)]
-        struct Reinterpret
-        {
-            [FieldOffset(0)]
-            public int IntValue;
-            [FieldOffset(0)]
-            public uint UIntValue;
-            [FieldOffset(0)]
-            public float FloatValue;
-
-            public static uint FloatToUInt(float floatValue)
-            {
-                return new Reinterpret { FloatValue = floatValue }.UIntValue;
-            }
-
-            public static uint IntToUInt(float floatValue)
-            {
-                return new Reinterpret { FloatValue = floatValue }.UIntValue;
-            }
-        }
-
+        public Random Random;
         public HumanParameters HumanParameters;
         public NativeArray<HumanInstanceData> HumanInstances;
         public float Time;
@@ -66,6 +68,8 @@ namespace LD51
 
         public void Execute(int idx, TransformAccess transform)
         {
+            transform.position += Vector3.right * DeltaTime;
+            return;
             bool modified = false;
             var human = HumanInstances[idx];
             if (!human.Waiting)
@@ -77,7 +81,7 @@ namespace LD51
 
                     human.Waiting = true;
                     human.EndStateTime
-                        += human.Random.NextFloat(
+                        += Random.NextFloat(
                             HumanParameters.MinWaitTime,
                             HumanParameters.MaxWaitTime
                         );
@@ -98,11 +102,11 @@ namespace LD51
                 {
                     human.Waiting = false;
                     human.EndStateTime
-                        += human.Random.NextFloat(
+                        += Random.NextFloat(
                             HumanParameters.MinMoveTime,
                             HumanParameters.MaxMoveTime
                         );
-                    var theta = human.Random.NextFloat(
+                    var theta = Random.NextFloat(
                         0,
                         2 * math.PI
                     );
