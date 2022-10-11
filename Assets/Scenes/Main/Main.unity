@@ -866,7 +866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2516758239204536283, guid: 736f6bc6740a0744d91e618dd5ad6331, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 70.5113
+      value: 63.117443
       objectReference: {fileID: 0}
     - target: {fileID: 2516758239204536283, guid: 736f6bc6740a0744d91e618dd5ad6331, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.25
+  m_fontSize: 25.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1356,7 +1356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2516758239204536283, guid: 736f6bc6740a0744d91e618dd5ad6331, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 70.5113
+      value: 63.117443
       objectReference: {fileID: 0}
     - target: {fileID: 2516758239204536283, guid: 736f6bc6740a0744d91e618dd5ad6331, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1449,6 +1449,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1557,6 +1558,18 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f0fb3c25f998b4a9f4cb5ec276d580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &558444558
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,7 +2464,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.25
+  m_fontSize: 25.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2892,11 +2905,13 @@ MonoBehaviour:
     MaxMoveTime: 3
     MinWaitTime: 0.2
     MaxWaitTime: 1
+    Range: {x: 20, y: 20}
+    MinSpawnRange: {x: 2, y: 2}
   humanPrefab: {fileID: 3844949836846544238, guid: 18ab459abbe900544807d6c22496f9b4, type: 3}
-  startPopulation: 3000
-  maxPopulation: 5000
-  range: {x: 5, y: 5}
-  visibleRange: {x: 5, y: 5}
+  startPopulation: 5
+  maxPopulation: 100
+  spawnRange: {x: 20, y: 20}
+  updateSpawnRangeFromCamera: 1
 --- !u!1 &1308280310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3858,7 +3873,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.05
+  m_fontSize: 25.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4071,7 +4086,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.25
+  m_fontSize: 25.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

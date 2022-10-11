@@ -29,10 +29,13 @@ namespace LD51
         int maxPopulation;
 
         [SerializeField]
-        Vector2 range;
+        Vector2 spawnRange;
 
         [SerializeField]
-        Vector2 visibleRange;
+        [Tooltip("Make it so MinSpawnRange is at camera edges")]
+        bool updateSpawnRangeFromCamera;
+
+        Vector2 originalRangePerAspct;
 
         HumanV2[] humans;
         //HumanInstanceData[] humanData;
@@ -77,7 +80,7 @@ namespace LD51
 
         void Awake()
         {
-            foreach(Transform childTransform in transform)
+            foreach (Transform childTransform in transform)
             {
                 Destroy(childTransform.gameObject);
             }
@@ -96,6 +99,9 @@ namespace LD51
                 Debug.Log("Ten seconds passed");
             };
             GameTime.Instance.EveryTenSeconds += Populate;
+
+            originalRangePerAspct = humanParameters.Range;
+            originalRangePerAspct.x /= Camera.main.aspect;
 
             humans = new HumanV2[maxAllocatedHumans];
             livingHumanTransforms = new TransformAccessArray(startPopulation);
@@ -132,11 +138,24 @@ namespace LD51
                     )
                 );
 
+                if (updateSpawnRangeFromCamera)
+                {
+                    humanParameters.MinSpawnRange = new Vector2(
+                        Camera.main.aspect * Camera.main.orthographicSize + 0.5f,
+                        Camera.main.orthographicSize + 0.5f
+                    );
+                    humanParameters.Range = new Vector2(
+                        originalRangePerAspct.x * Camera.main.aspect,
+                        originalRangePerAspct.y
+                    );
+                }
+
                 humanTransformJob = new HumanTransformJob
                 {
                     Random = random,
                     HumanParameters = humanParameters,
                     HumanInstances = humanData,
+                    PlayerPosition = State.Local.Player.Movement.Position,
                     Time = GameTime.Time,
                     DeltaTime = GameTime.DeltaTime
                 };
@@ -259,8 +278,8 @@ namespace LD51
             foreach(var human in startHumans)
             {
                 human.transform.position = (Vector3)new Vector2(
-                    Random.Range(-1f, 1f) * range.x,
-                    Random.Range(-1f, 1f) * range.y
+                    Random.Range(-1f, 1f) * spawnRange.x,
+                    Random.Range(-1f, 1f) * spawnRange.y
                 );
             }
         }

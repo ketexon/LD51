@@ -42,6 +42,9 @@ namespace LD51
 
         public float MinWaitTime;
         public float MaxWaitTime;
+
+        public Vector2 Range;
+        public Vector2 MinSpawnRange;
     }
 
     [System.Serializable]
@@ -64,6 +67,7 @@ namespace LD51
         public Random Random;
         public HumanParameters HumanParameters;
         public NativeArray<HumanInstanceData> HumanInstances;
+        public Vector2 PlayerPosition;
         public float Time;
         public float DeltaTime;
 
@@ -93,6 +97,7 @@ namespace LD51
                             human.MoveDirection.y,
                             0
                         );
+                    EnforceRange(transform);
                 }
             }
             else // Waiting
@@ -121,6 +126,45 @@ namespace LD51
             if (modified)
             {
                 HumanInstances[idx] = human;
+            }
+        }
+
+        // This function checks if position is outside
+        // HumanParameters.Range relative to PlayerPosition
+        // and moves the human to a random position on the other side
+        // of the player between MinSpawnRange
+        // and Range
+        void EnforceRange(TransformAccess transform)
+        {
+            Vector2 delta = (Vector2)transform.position - PlayerPosition;
+            Debug.Log(string.Format(
+                "Delta: ({0}, {1})",
+                delta.x,
+                delta.y
+            ));
+            if (math.abs(delta.x) > HumanParameters.Range.x)
+            {
+                transform.position
+                    -= Vector3.right * (
+                        delta.x // move to origin
+                        + math.sign(delta.x)
+                        * Random.NextFloat(
+                            HumanParameters.MinSpawnRange.x,
+                            HumanParameters.Range.x
+                        )
+                    );
+            }
+            if (math.abs(delta.y) > HumanParameters.Range.y)
+            {
+                transform.position
+                    -= Vector3.up * (
+                        delta.y // move to origin
+                        + math.sign(delta.y)
+                        * Random.NextFloat(
+                            HumanParameters.MinSpawnRange.y,
+                            HumanParameters.Range.y
+                        )
+                    );
             }
         }
     }
